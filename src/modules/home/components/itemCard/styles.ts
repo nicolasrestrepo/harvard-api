@@ -9,9 +9,10 @@ export const Card = styled.figure`
 `
 export const WrappImage = styled.div`
   background: #ddd;
-  height: 160px;
-  margin: 0 0 12px;
-  width: 200px;
+  height: 175px;
+  margin: 0 0 9px;
+  width: 220px;
+
 `
 
 export const Image = styled.img`
@@ -19,5 +20,10 @@ export const Image = styled.img`
   opacity: 1;
   transition: opacity 600ms;
   width: 100%;
-  height: 100%
+  height: 100%;
+
+  &:hover {
+    opacity: 0.5;
+    cursor: zoom-in
+  }
 `

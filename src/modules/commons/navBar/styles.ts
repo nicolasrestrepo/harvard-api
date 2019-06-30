@@ -10,9 +10,10 @@ export const Title = styled.h1`
 `;
 
 export const Wrapper = styled.div`
-  background-color: black;
+  background-color: '#ffffff';
   width: '100%';
-  height: 400
+  height: 30px;
+  box-shadow: 4px 0px 26px -3px rgba(0,0,0,0.75);
 `
 
 

@@ -5,12 +5,12 @@ import { Card, WrappImage, Image } from './styles'
 //   ref.current.classList.add(styles.loadedClass);
 // };
 
-const ItemCard = ({ item, style }: any) => {
+const ItemCard = ({ item, style, onClick }: any) => {
   const ref = useRef(null)
   if (!item) {
     return (
       <article style={style}>
-        <figure style={{ backgroundColor: '#000000' }} />
+        <figure />
       </article>
     );
   }
@@ -18,13 +18,11 @@ const ItemCard = ({ item, style }: any) => {
 
   return (
     <article style={style}>
-      <Card>
+      <Card onClick={() => onClick(item.baseimageurl)}>
         <WrappImage>
           <Image
-            width='160'
             ref={ref}
             src={item.baseimageurl}
-            onLoad={(e) => console.log('onload', e)}
             alt=""
           // onLoad={onLoad(ref)}
           />

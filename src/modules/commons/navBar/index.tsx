@@ -4,7 +4,7 @@ import { Title, Wrapper } from './styles'
 const NavBar: React.FC = () => {
   return (
     <Wrapper>
-      <Title>Harvard Api</Title>
+      <Title>Harvard Pictures</Title>
     </Wrapper>
 
   )

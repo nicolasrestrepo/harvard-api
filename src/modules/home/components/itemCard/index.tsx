@@ -1,30 +1,28 @@
 import React, { useRef } from 'react'
 import { Card, WrappImage, Image } from './styles'
-
-// const onLoad = ref => () => {
-//   ref.current.classList.add(styles.loadedClass);
-// };
+import Skeleton from "react-loading-skeleton"
 
 const ItemCard = ({ item, style, onClick }: any) => {
+
   const ref = useRef(null)
+
   if (!item) {
     return (
       <article style={style}>
-        <figure />
+        <Skeleton height={275} width={350} />
       </article>
     );
   }
 
 
   return (
-    <article style={style}>
+    <article data-testid='item-card' style={style}>
       <Card onClick={() => onClick(item.baseimageurl)}>
         <WrappImage>
           <Image
             ref={ref}
             src={item.baseimageurl}
-            alt=""
-          // onLoad={onLoad(ref)}
+            alt="harvard-image"
           />
         </WrappImage>
       </Card>

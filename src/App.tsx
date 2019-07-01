@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react'
 import { Router } from '@reach/router'
 // layouts
 import Layout from './layouts/main'
+
 // components
 
 const Home = lazy(() => import('./modules/home'))

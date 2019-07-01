@@ -9,6 +9,12 @@ export const Header = styled.div`
 
 `;
 
+export const Title = styled.h1`
+  color: #305f72;
+  font-family: "Helvetica Neue";
+`;
+
+
 export const CloseButton = styled.button`
   background-color: transparent;
   border: none;

@@ -29,20 +29,20 @@ Modules structure
 │   │    │      ├──/__tests__
 │   │    │      │ 
 │   │    │      ├──components -> these components is only used for the module
-│   │    │      │     └──component (example estrure for a component)
+│   │    │      │     └──/component (example estrure for a component)
 │   │    │      │         ├──index.tsx
 │   │    │      │         └──styles.ts
 │   │    │      ├──/interfaces
 │   │    │      ├──index.tsx
 │   │    │      └──styles.ts
-│   │    └──/common -> is a components shared between several modules
+│   │    └──/commons -> is a components shared between several modules
 │   └── /utils
 ├── .env.example
 ├── .env
 └── ...others configuration files
 ```
 # Author 
-Nicolas Restrepo (nico) :)
+Nicolas Restrepo
 
 # License 
 

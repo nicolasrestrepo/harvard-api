@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 import ReactDom from 'react-dom'
-import { CloseButton, Header } from './styles'
+import { CloseButton, Header, Title } from './styles'
 
 const customStyles = {
   content: {
@@ -43,7 +43,7 @@ const CustomModal = ({ title, imgUrl, firstModalVisible, onClose }: IProps) => {
         contentLabel="Detail"
       >
         <Header>
-          <h2>{title}</h2>
+          <Title>{title}</Title>
           <CloseButton onClick={closeModal}>X</CloseButton>
         </Header>
         <div>

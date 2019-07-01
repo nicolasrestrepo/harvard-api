@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { RouteComponentProps } from '@reach/router'
-import { FixedSizeGrid } from "react-window"
 import InfiniteLoader from "react-window-infinite-loader"
 import { get } from '../../utils/request'
+import { FixedSizeGrid } from 'react-window'
 import ItemCard from './components/itemCard'
 import Modal from '../commons/modal'
 import { IItem } from './interfaces'
 import { Wrapper } from './styles'
 
 
+
+
 let requestCache: any = {};
-const COLUMN_WIDTH = 235
-const ROW_HEIGHT = 180
+const COLUMN_WIDTH = 370
+const ROW_HEIGHT = 280
 
 const Home: React.FC<RouteComponentProps> = () => {
 
@@ -20,7 +22,7 @@ const Home: React.FC<RouteComponentProps> = () => {
   const [height, setHeight] = useState<number>(0)
   const [page, setPage] = useState<number>(0)
   const [columns, setColumns] = useState<number>(0)
-  const [count, setCount] = useState<number>(20)
+  const [count, setCount] = useState<number>(10)
 
   // set modal for view detail prop
   const [viewDetail, setViewDetail] = useState<boolean>(false)
@@ -31,6 +33,7 @@ const Home: React.FC<RouteComponentProps> = () => {
 
   // get more items a validate if the section is in cache
   const loadMoreItems: any = async (visibleStartIndex: any, visibleStopIndex: any) => {
+    console.log('dataaaaa -->')
     try {
       const key = [visibleStartIndex, visibleStopIndex].join(':');
       if (requestCache[key]) {
@@ -38,6 +41,7 @@ const Home: React.FC<RouteComponentProps> = () => {
       }
 
       let itemsRetrieved = true;
+
       for (let i = visibleStartIndex; i < visibleStopIndex; i += 1) {
         if (!items[i]) {
           itemsRetrieved = false;
@@ -52,13 +56,14 @@ const Home: React.FC<RouteComponentProps> = () => {
       const newPage = page + 1
       const { data, status } = await get('/image', {
         page: newPage,
-        size: 20
+        size: 10
       })
+
       if (data && status === 200) {
         const { info: { page } } = data
         setItems([...items, ...data.records])
         setPage(page)
-        setCount(count + 20)
+        setCount(count + 10)
       }
 
       requestCache[key] = key;
@@ -94,9 +99,10 @@ const Home: React.FC<RouteComponentProps> = () => {
   // responsive recalculate size, for render columns
   const recalcSize = () => {
 
-    const recalWidth = (document.documentElement.clientWidth || document.body.clientWidth) - 40;
+    const recalWidth = (document.documentElement.clientWidth || document.body.clientWidth) - 70;
+
     const recalHeight = window.innerHeight - 60;
-    const recalColumns = Math.floor((width - 30) / COLUMN_WIDTH);
+    const recalColumns = Math.floor((width - 60) / COLUMN_WIDTH);
 
     setWidth(recalWidth)
     setHeight(recalHeight)
@@ -116,6 +122,7 @@ const Home: React.FC<RouteComponentProps> = () => {
   //
 
   useEffect(() => {
+    console.log('data')
     recalcSize()
     window.addEventListener('resize', recalcSize);
     return () => {
@@ -123,9 +130,8 @@ const Home: React.FC<RouteComponentProps> = () => {
     };
   })
 
-
   return (
-    <Wrapper>
+    <Wrapper data-testid="greeting-text">
       <Modal
         imgUrl={detailImgUrl}
         firstModalVisible={viewDetail}
@@ -138,21 +144,20 @@ const Home: React.FC<RouteComponentProps> = () => {
         itemCount={count}
       >
         {({ onItemsRendered, ref }) => (
-          <>
-            <FixedSizeGrid
-              onItemsRendered={handleOnItemsRendered(onItemsRendered)}
-              columnCount={columns}
-              columnWidth={COLUMN_WIDTH}
-              height={height}
-              rowCount={Math.ceil(count / columns)}
-              rowHeight={ROW_HEIGHT}
-              width={width}
-              ref={ref}
-            >
-              {renderCell}
-            </FixedSizeGrid >
-          </>
-        )}
+          <FixedSizeGrid
+            onItemsRendered={handleOnItemsRendered(onItemsRendered)}
+            columnCount={columns}
+            columnWidth={COLUMN_WIDTH}
+            height={height}
+            rowCount={Math.ceil(count / columns)}
+            rowHeight={ROW_HEIGHT}
+            width={width}
+            ref={ref}
+          >
+            {renderCell}
+          </FixedSizeGrid >
+        )
+        }
       </InfiniteLoader>
     </Wrapper>
   )

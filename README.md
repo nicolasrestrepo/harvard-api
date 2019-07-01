@@ -5,12 +5,15 @@ this is a test to resuelve.mx, using the harvard api. [Demo](https://harvard-api
 
 # run
 
+change the .env.example by .env and add apiKey and apuUrl after that, use yarn.
+
 [Yarn](https://github.com/yarnpkg/)
 
 ```sh
 yarn && yarn start
 
 ```
+
 
 ## Soluction
 

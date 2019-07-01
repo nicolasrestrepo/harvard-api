@@ -131,7 +131,7 @@ const Home: React.FC<RouteComponentProps> = () => {
   })
 
   return (
-    <Wrapper data-testid="greeting-text">
+    <Wrapper>
       <Modal
         imgUrl={detailImgUrl}
         firstModalVisible={viewDetail}

@@ -15,7 +15,7 @@
     "@types/react-window": "^1.8.0",
     "@types/react-window-infinite-loader": "^1.0.0",
     "@types/styled-components": "^4.1.16",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
